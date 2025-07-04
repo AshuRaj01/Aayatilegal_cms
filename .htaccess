@@ -1,0 +1,10 @@
+Options +SymLinksIfOwnerMatch
+RewriteEngine On
+
+# Allow Installatron requests
+RewriteCond %{REQUEST_FILENAME} deleteme\.\w+\.php
+RewriteRule (.*) - [L] 
+
+# ✅ Skip adminer.php from Laravel's routing
+RewriteCond %{REQUEST_URI} !=/adminer.php
+RewriteRule ^ index.php [L]
